@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+html{
+    font: size 14px;
+
+}
+
+body{
+    font-family: 'noto Sans',sans-serif;
+
+}
+
+
+
+
+
+.bg-cart{
+    background:url(/static/images/cart23.jpg);
+    color: white;
+    height: 100%;
+    background-attachment: fixed;
+    background-size:100%;
+    background-repeat: no-repeat;
+}
+
+a{
+    text-decoration: none;
+}
+.carousel-item{
+    border-radius: 20px;
+    margin-top: 5px;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+}
+
+
+.col-box{
+    background:rgba(141, 122, 96, 0.411);
+    align-items: center;
+    justify-content: center;
+    object-position: top center;
+    height: 335px;
+    width: 250px;
+    /*height: 320px;
+    width: 250px;*/
+    overflow: hidden;
+}
+.col-box img{
+    align-items: center;
+    justify-content: center;
+    object-position: top center;
+    object-fit:cover;
+    margin-left:20px ;
+    margin-top: 10px;
+    height: 210px;
+    width: 210px;
+    overflow: hidden;
+}
+
+
+.card{
+
+    background:rgba(165, 184, 165, 0.705);
+    background-size: cover;
+    align-items: center;
+    justify-content: center;
+    object-position: top center;
+    height: 363px;
+    width: 250px;
+    overflow: hidden;
+}
+
+
+.card img{
+    align-items: center;
+    justify-content: center;
+    object-fit:cover;
+    object-position: top;
+    
+    margin-left: 20px;
+    margin-right: 15px;
+    height: 210px;
+    width: 210px;
+    size: 100%;
+    overflow: hidden;
+}
+.old_price{
+    font-weight: bold;
+    color: red;
+}
+.new_price{
+    font-weight: bold;
+    background-color: green;
+    color: white;
+    padding: 2px;
+    border-radius: 5px;
+}
+
+.pic-box{
+    position: relative;
+}
+
+.hot{
+    background-color: orangered;
+    color: white;
+    width: 75px;
+    text-align: center;
+    font-weight: bold;
+    display: inline;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 3px;
+    position: absolute;
+    top:0;
+    left: 15px;
+    
+}
+.image-box {
+    align-items: center;
+    justify-content: center;
+    object-fit:cover;
+    object-position: top;
+    height: fit-content;
+    width: fit-content;
+    overflow: hidden;
+}
+.image-box img{
+    width:300px;
+    align-items: center;
+    justify-content: center;
+    object-fit:cover;
+    object-position: top;
+    overflow: hidden;
+}
+#home{
+    height: 210px;
+}
+.reg{
+    width: 40%;
+    background-color:rgba(54, 129, 179, 0.534); 
+    border: rgb(54, 129, 179);
+    border-radius: 7px;
+    padding: 20px;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 0px;
+    align-content: center;
+    text-align: center;
+    /*font-size: x-large;*/
+    align-items: center;
+    justify-content: center;
+}
+.login{
+    min-height: 350px;
+    width: 25%;
+    background-color:rgba(141, 75, 216, 0.767);
+    border: 7px solid rgba(65, 61, 70, 0.192);
+    border-radius: 7px;
+    padding: 15px;
+    margin-left: 35%;
+    margin-right: 35%;
+    align-content: center;
+    text-align: center;
+    
+    align-items: center;
+    justify-content: center;
+}

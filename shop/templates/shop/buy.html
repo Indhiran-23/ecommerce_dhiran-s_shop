@@ -1,0 +1,57 @@
+{% extends 'shop/layout/main.html' %}
+{% load static %}
+{% block title %}
+    BUY | GET
+{% endblock title %}
+
+{% block content %}
+
+<div style="margin-top: 55px;">{% include 'shop/include/messages.html' %}</div>
+<section class="bg-light py-4 my-5 " >
+    <div class="container">
+        <h4 class="mb-3">{{products | upper}} </h4>
+        <hr style="border-color: #b8bfc2;"> 
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'collections' %}">Collections</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{products}}</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+<section class="py-4 my-5">
+   
+        
+            <div class="col-6 " style=" width: 65%; margin-left: 15%;margin-right: 35%;padding-top: 25px; padding-bottom: 30px; padding-left: 15%;padding-right: 10%; border: 10px solid rgba(211, 135, 211, 0.527);border-radius: 20px;">
+                <form >
+                    {% csrf_token %}
+                    <img src="{{products.product_image.url}}" class="card-image-top " alt="{{products}}"><br><br>
+                    <h5 class="text-success ">{{products}}</h5>
+                    <h6 class="my-2 text-danger">Current Price : Rs.<S>{{products.original_price |stringformat:'d'}}</S></h6>
+                    <h6 class="my-2 text-primary">Price : Rs.{{products.selling_price |stringformat:'d'}}</h6>
+                    <h6><b>PAYMENT :</b>Cash On Delivery</h6>
+                    <label for="fname">First name:</label><br>
+                    <input type="text" size="20" id="fname" name="fname"><br><br>
+                    <label for="lname">Last name:</label><br>                
+                    <input type="text" size="20" id="lname" name="lname"><br><br>
+                    <label for="lname">Mobile Number:</label><br>                
+                    <input type="text" size="20" id="lname" name="lname"><br><br>
+                    <label for="cf_address" >Address:</label><br>
+                    <input type="text" size="20" id="cf_address" name="cf_address"><br><br>
+                    <input type="submit"formnovalidate="formnovalidate" onclick="order()" value="Order" class="btn btn-warning" style="width:50vh";>
+                </form>   
+            </div>
+        
+    
+</section>
+
+<script>
+    function order(){
+        alert("ordered successfully done by {{user}}.Thankyou!!! ");
+    }
+
+</script>
+{% endblock content %}
+
+

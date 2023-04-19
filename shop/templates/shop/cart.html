@@ -1,0 +1,56 @@
+{% extends 'shop/layout/main.html' %}
+{% load static %}
+{% block title %}
+    CART |  {{user }}
+{% endblock title %}
+
+
+{% block content %}
+
+<!--style="margin-top: 55px;"-->
+<div style="margin-top: 55px;">{% include 'shop/include/messages.html' %}</div>
+<section class="bg-light py-4 my-5 bg-cart ">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="mb-3" style="color: black;">Cart Products :</h4>
+                <hr style="border-color: #b8bfc2;">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">Cart</li>
+                    </ol>
+                  </nav>
+            </div>
+
+            <table class="table">
+                <tr>
+                    <th>Image</th>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Amount</th>
+                    <td>Added At</td>
+                    <th>Remove</th>
+                </tr>
+                {% for item in cart %}
+                <tr>
+                    <td><a href="{% url 'product_details' item.product.category.name item.product.name %}"><img src="{{item.product.product_image.url}}"  alt="{{item.product.product_image}}" style="height: 150px;"></a></td>
+                    <td ><a href="{% url 'product_details' item.product.category.name item.product.name %}">{{ item.product.name }}</a></td>
+                    <td >{{ item.product.selling_price }}</td>
+                    <td >{{item.product_qty}}</td>
+                    <td class="amt">Rs. {{item.total_cost | stringformat:'d'}}</td>
+                    <td >{{ item.created_at }}</td>
+                    <td><a href="{% url 'remove_cart' item.id %}" onclick="return confirm('Are You Sure To Romove')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Remove</a></td>
+                    </a>
+                </tr>
+                
+                {% endfor %}
+
+            </table>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
+    

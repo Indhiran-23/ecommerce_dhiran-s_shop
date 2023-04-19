@@ -1,0 +1,53 @@
+{% extends 'shop/layout/main.html' %}
+{% load static %}
+{% block title %}
+{{category_name}}
+{% endblock title %}
+
+{% block content %}
+
+<div style="margin-top: 55px;">{% include 'shop/include/messages.html' %}</div>
+    <section class="bg-light py-4 my-5 bg-product ">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h4 class="mb-3 ">{{category_name}} : </h4>
+                    <hr style="border-color: #b8bfc2;">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'collections' %}">Collections</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{category_name}}</li>
+                
+                        </ol>
+                    </nav>
+
+                </div>
+    
+                {% for item in products %}
+                    
+                <div class="col-md-4 col-lg-3 product-box">
+                    <div class="card my-3" >
+                        <a href="{% url 'product_details' category_name item.name %}" >
+                        <img src="{{item.product_image.url}}" class="card-image-top" alt="categories">
+                        
+                        <div class="card-body">
+                            <h5 class="card-title text-primary" >{{item.name}}</h5>
+                            <p class="card-text">
+                                <span class="float-start old_price"><s>Rs.{{item.original_price |stringformat:'d'}}</s></span>
+                                <span class="float-end new_price">Rs.{{item.selling_price |stringformat:'d'}}</span>
+                            </p>
+                            
+                        </div>
+                    </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+{% endblock content %}
+    
+
+

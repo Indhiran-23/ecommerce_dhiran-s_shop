@@ -1,0 +1,46 @@
+{% extends 'shop/layout/main.html' %}
+{% load static %}
+{% block title %}
+    COLLECTIONS
+{% endblock title %}
+
+
+{% block content %}
+
+<div style="margin-top: 55px;">{% include 'shop/include/messages.html' %}</div>
+<section class="bg-light py-4 my-5 bg-col">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="mb-3">COLLECTION CATEGORIES :</h4>
+                <hr style="border-color: #b8bfc2;">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">Collections</li>
+                    </ol>
+                  </nav>
+
+            </div>
+
+            {% for item in catagory %}
+            <div class="col-md-4 col-lg-3">
+                <div class="col-box my-3 " >
+                    <a href="{% url 'collections' item.name %}">
+                    <img src="{{item.image.url}}" class="card-image-top" alt="categories">
+                    
+                    <div class="card-body">
+                        <h5 class="card-title text-primary" >{{item.name}}</h5>
+                        <p class="card-text">{{item.description}}</p>
+                        
+                    </div>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
+    
