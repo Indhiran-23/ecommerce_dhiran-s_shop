@@ -11,7 +11,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h4 class="mb-3">{{products}} Details</h4>
+                <h4 class="mb-3">{{products}} Details :</h4>
                 <hr style="border-color: #b8bfc2;">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
@@ -20,12 +20,11 @@
                       <li class="breadcrumb-item"><a href="{% url 'collections' products.category.name %}">{{products.category.name}}</a></li>
                       <li class="breadcrumb-item active" aria-current="page">{{products}}</li>
                     </ol>
-                  </nav>
-
+                </nav>
             </div>
             <div class="col-4 my-3 pic-box">
                 {% if products.trending  %}
-                
+
                 <div class="hot">Trending</div>
 
                 {% endif %}
@@ -33,21 +32,16 @@
                     <img src="{{products.product_image.url}}" class="card-image-top " alt="{{products}}">
                 </div>
             </div>
-            <div class="col-8 my-3">
-                <h5 class="text-success ">{{products}}</h5>
-                <p ><b>Seller Name</b> : {{products.vender | upper}}</p>
-                <p><b>Description</b>: {{products.description}}</p>
-                <h6 class="my-2 text-danger">Current Price : Rs.<S>{{products.original_price |stringformat:'d'}}</S></h6>
-                <h6 class="my-2 text-primary">Offer Price : Rs.{{products.selling_price |stringformat:'d'}}</h6>
-                <div class="my-3">
+            <div class="col-md-16 col-lg-8 col-sm-16 my-3 details">
+                <div class="my-3 addtoc">
                     {% if products.quantity > 0 %}
                     <input type="hidden" value="{{products.id}}" id="pid">
-                    
+
                     <p>
                         <div class="input-group" style="width:150px">
                             <button class="input-group-text bg-danger text-light" id="btnMinus" style="width: 40px;"><i class="fa fa-minus"></i></button>
                                 <input type="text" name="qty" id="txtQty" value="1" class="form-control text-center" style="width: 72px;">
-                            <button class="input-group-text bg-success text-light" id="btnPlus" style="width: 40px;"><i class="fa fa-plus"></i></button>    
+                            <button class="input-group-text bg-success text-light" id="btnPlus" style="width: 40px;"><i class="fa fa-plus"></i></button>
                         </div>
                     </p>
                     <button class="btn btn-primary" id="btnCart"><i class="fa fa-shopping-cart">Add to cart</i></button>
@@ -55,8 +49,14 @@
                     <button class="btn btn-secondary"><i class="fa fa-minus">Out of stock</i></button>
                     {% endif%}
                     <button class="btn btn-danger" id="btnFav"><i class="fa fa-heart"></i></button>
-                    
+
                 </div>
+                <h5 class="text-success ">{{products}}</h5>
+                <p ><b>Seller Name</b> : {{products.vender | upper}}</p>
+                <p><b>Description</b>: {{products.description}}</p>
+                <h6 class="my-2 text-danger">Current Price : Rs.<S>{{products.original_price |stringformat:'d'}}</S></h6>
+                <h6 class="my-2 text-primary">Offer Price : Rs.{{products.selling_price |stringformat:'d'}}</h6>
+                
                 <div><a href="{% url 'buy' products products.category.name %}"><button class="btn btn-warning" id="" style="width: 160px;"><i class="fa fa-shopping-cart">Buy</i></button></a></div>
             </div>
         </div>
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded",function(event){
     const btnCart= document.getElementById("btnCart");
     const btnFav = document.getElementById("btnFav");
 
-    
+
     btnPlus.addEventListener("click",function(){
         let qty=parseInt(txtQty.value,10);
         qty=isNaN(qty)?0:qty;
@@ -114,15 +114,15 @@ document.addEventListener("DOMContentLoaded",function(event){
                 //console.log(data)
                 alert(data['status'])
             });
-            
+
         }else{
             alert("Please Enter the Quantity");
         }
     });
     btnFav.addEventListener("click",function() {
-        
+
         let post0bj = {
-            
+
             'pid': pid.value,
         }
         //console.log(post0bj);
@@ -141,17 +141,25 @@ document.addEventListener("DOMContentLoaded",function(event){
             //console.log(data)
             alert(data['status'])
         });
-        
+
 
 });
-  
+
 });
 
 
 
 </script>
+<style>
+    
+    @media only screen and (max-width:650px){
+        .pic-box,.addtoc{
+            margin-left: 50px;
+        }
+    } 
+</style>
 
 {% endblock content %}
-    
+
 
 

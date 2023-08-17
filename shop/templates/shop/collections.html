@@ -8,8 +8,8 @@
 {% block content %}
 
 <div style="margin-top: 55px;">{% include 'shop/include/messages.html' %}</div>
-<section class="bg-light py-4 my-5 bg-col">
-    <div class="container">
+<section class="bg-light py-4 my-5 bg-col" >
+    <div class="container" >
         <div class="row">
             <div class="col-12">
                 <h4 class="mb-3">COLLECTION CATEGORIES :</h4>
@@ -23,24 +23,72 @@
 
             </div>
 
-            {% for item in catagory %}
-            <div class="col-md-4 col-lg-3">
+           {% for item in catagory %}
+            <div class=" col-sm-6 col-md-6  col-lg-3">
                 <div class="col-box my-3 " >
                     <a href="{% url 'collections' item.name %}">
-                    <img src="{{item.image.url}}" class="card-image-top" alt="categories">
-                    
+                    <div class="colletdiv">
+                        <img src="{{item.cat_image.url}}" class="card-image-top" alt="categories">
+                    </div>
                     <div class="card-body">
-                        <h5 class="card-title text-primary" >{{item.name}}</h5>
-                        <p class="card-text">{{item.description}}</p>
-                        
+                        <h5 class="card-title collectiontitle" >{{item.name}}</h5>
+                        <p class="card-text collectiondes">{{item.description}}</p>
+
                     </div>
                     </a>
                 </div>
             </div>
             {% endfor %}
+
+
         </div>
     </div>
 </section>
+<style>
+    @media only screen and (max-width:650px){
+        .col-box{
+            margin-left: 50px;
 
-{% endblock content %}
+        }
+        .col-box .colletdiv {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 400px;
+            width: 300px;
+        }
+          
+        .col-box  img{
+            height: 100%;
+            width: auto;
+        }
     
+    }
+    .col-box .colletdiv {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 200px;
+        
+    }
+    .col-box  img{
+        height: 100%;
+        width: auto;
+        border-radius: 7px;
+    }
+    .collectiontitle{
+        color: rgb(70, 25, 70);
+        font-family:Helvetica;
+        font-weight: bold;
+    }
+    .collectiontitle:hover{
+        text-decoration: underline;
+    }
+    .collectiondes:hover{
+        color: rgb(89, 174, 207);
+        
+    }
+   
+</style>
+{% endblock content %}
+

@@ -8,7 +8,7 @@
 
 <div style="margin-top: 55px;">{% include 'shop/include/messages.html' %}</div>
     <section class="bg-light py-4 my-5 bg-product ">
-        <div class="container">
+        <div class="container-fluid" style="margin-left:30px">
             <div class="row">
                 <div class="col-12">
                     <h4 class="mb-3 ">{{category_name}} : </h4>
@@ -18,26 +18,27 @@
                         <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
                         <li class="breadcrumb-item"><a href="{% url 'collections' %}">Collections</a></li>
                         <li class="breadcrumb-item active" aria-current="page">{{category_name}}</li>
-                
+
                         </ol>
                     </nav>
 
                 </div>
-    
+
                 {% for item in products %}
-                    
+
                 <div class="col-md-4 col-lg-3 product-box">
                     <div class="card my-3" >
                         <a href="{% url 'product_details' category_name item.name %}" >
-                        <img src="{{item.product_image.url}}" class="card-image-top" alt="categories">
-                        
+                        <div class="productimg">
+                            <img src="{{item.product_image.url}}" class="card-image-top" alt="categories">
+                        </div>
                         <div class="card-body">
-                            <h5 class="card-title text-primary" >{{item.name}}</h5>
+                            <h5 class="card-title name"  >{{item.name}}</h5>
                             <p class="card-text">
                                 <span class="float-start old_price"><s>Rs.{{item.original_price |stringformat:'d'}}</s></span>
                                 <span class="float-end new_price">Rs.{{item.selling_price |stringformat:'d'}}</span>
                             </p>
-                            
+
                         </div>
                     </a>
                     </div>
@@ -47,7 +48,53 @@
         </div>
     </section>
 
-{% endblock content %}
+    <style>
+        @media only screen and (max-width:650px){
+            .card{
+                margin-left: 50px;
     
+            }
+            .card .productimg {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 200px;
+                width: 300px;
+            }
+              
+            .productimg  img{
+                height: 100%;
+                width: auto;
+            }
+        
+        }
+        .card .productimg {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 200px;
+                width: 300px;
+            }
+        .card  img{
+            height: 100%;
+            width: auto;
+            border-radius: 7px;
+        }
+        .name{
+            color:#a71960;
+            font-weight: bold;
+            font-family: Calibri;
+        }
+        .name:hover{
+            text-decoration: underline;
+            color:#a84677;
+            font-family: 'Gill Sans';
+            border-radius: 4px;
+            padding: 3px;
+        }
+
+    </style>
+{% endblock content %}
+
 
 

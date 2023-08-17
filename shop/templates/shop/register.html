@@ -13,11 +13,11 @@
             <hr style="border-color: #b8bfc2;">
             
     </div>
-    <section class="py-4 my-5" id="register-section">
+    <section class="" id="register-section">
         <div class="container">
             <div class="row">
-                <div class="col-6 reg">
-                    <form method="post" action="">
+                <div class=" registion">
+                    <form method="post" action="" class="regi">
                     {% csrf_token %}
                     <div class="mb-4">
                         <label for="" class="form-label">User Name</label>
@@ -48,13 +48,45 @@
                         {% endif %}
                     </div>
                     <button type="submit" class="btn btn-success">Register</button>
+                    <div>
+                        <p class="my-2 log">Already User ? <a href="{% url 'login' %}">Login Now</a></p>
+                    </div>
                     </form>
-                    <p class="my-2 log">Already User ? <a href="{% url 'login' %}">Login Now</a></p>
+                    
                 </div>
             </div>
         </div>
     </section>
 </div>
 
+<style>
+    .registion{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    
+    }
+    .regi{
+        width:550px;
+        border:1px solid rgb(54, 129, 179);
+        padding:20px;
+        border-radius:5px;
+        background-color:rgba(54, 129, 179, 0.534);
+        text-align:center;
+        margin-bottom:10px;
+    }
+    .regi button{
+        transition:0.8s ease;
+    }
+    .regi button:hover{
+        background:green;
+        width:200px;
+    }
+    @media only screen and (max-width: 750px) {
+        .regi{
+            width:450px;
+        }
+    }
+    </style>
 {% endblock content %}
     

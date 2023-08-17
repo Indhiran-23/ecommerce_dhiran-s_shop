@@ -10,7 +10,7 @@ def getFileName(request,filename):
 
 class Catagory(models.Model):
     name=models.CharField(max_length=150,null=False,blank=False)
-    image=models.ImageField(upload_to=getFileName,null=True,blank=True)
+    cat_image=models.ImageField(upload_to=getFileName,null=True,blank=True)
     description=models.TextField(max_length=500,null=False,blank=False)
     status=models.BooleanField(default=False,help_text="0-show,1-Hidden")
     created_at=models.DateTimeField(auto_now_add=True)
@@ -56,4 +56,11 @@ class Favourite(models.Model):
     def __str__(self):
         return self.product.name
     
-      
+class Buy(models.Model):
+    fname=models.CharField(max_length=15,null=False,blank=False)
+    lname=models.CharField(max_length=15,null=False,blank=False)
+    mobilenumber=models.IntegerField(null=False,blank=False)
+    address=models.TextField(max_length=300,null=False,blank=False)
+
+    def __str__(self):
+        return self.user

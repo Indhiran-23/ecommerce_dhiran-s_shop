@@ -146,3 +146,4 @@ def buy(request,bname,Bname):
     else:
         messages.error(request,"NO SUCH PRODUCT DETAILS FOUND")
         return redirect('collections')     
+    

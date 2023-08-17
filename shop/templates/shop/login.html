@@ -7,36 +7,74 @@
 {% block content %}
 <div style="margin-top: 55px;">{% include 'shop/include/messages.html' %}</div>
 <div class="container" style="margin-top: 70px;">
- 
+    <div >
             <h4>User Login</h4>
             <hr style="border-color: #b8bfc2;">
 
 
     </div>
-    <section class="py-4 my-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-6 login">
-                    <form method="post" action="">
-                        {% csrf_token %}
-                        <div class="mb-4">
-                            <label for="" class="form-label">User Name</label>
-                            <input type="text" name="username" id="username" class="form-control" placeholder="Enter UserName">
-                        </div>
-                        <div class="mb-4">
-                            <label for="" class="form-label">Password</label>
-                            <input type="password" name="password" id="password" class="form-control" placeholder="Enter Password">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Login</button>
-                    </form>  <br>
+
+    <section class="loginform">
+        <div class="container" style="text-align: center;display: flex;justify-content: center;align-items:center;">
+            <form method="post" action="" class="form">
+                {% csrf_token %}
+                <div class="mb-4">
+                    <label for="" class="form-label">User Name</label>
+                    <input type="text" name="username" id="username" class="form-control" placeholder="Enter UserName">
+                </div>
+                <div class="mb-4">
+                    <label for="" class="form-label">Password</label>
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Enter Password">
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+                <div>
                     <p class="my-2 log">New User ? <a href="{% url 'register' %}" >Register</a></p> 
                 </div>
-                
-            </div>
-            
+            </form>
         </div>
     </section>
+    
+    
+        
 </div>
+
+<style>
+    
+            
+    .loginform{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .form{
+        border: 1px solid rgb(155, 155, 155);
+        border-radius: 5px;
+        padding: 25px;
+        background:rgb(219, 219, 219);
+    }
+
+    .form input{
+        width: 350px;
+    }
+    .form label{
+        padding-top:10px;
+        padding-bottom: 10px;
+    }
+    @media only screen and (max-width: 650px) {
+        .form input{
+            width: 300px;
+        }
+        
+    }
+    .form button{
+        width: 150px;
+        margin-bottom: 10px;
+    }
+    .form button:hover{
+        background: blue;
+    }
+
+
+</style>
 
 {% endblock content %}
     

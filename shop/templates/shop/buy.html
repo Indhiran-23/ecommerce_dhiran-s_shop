@@ -7,10 +7,10 @@
 {% block content %}
 
 <div style="margin-top: 55px;">{% include 'shop/include/messages.html' %}</div>
-<section class="bg-light py-4 my-5 " >
+<section class="bg-light  " >
     <div class="container">
         <h4 class="mb-3">{{products | upper}} </h4>
-        <hr style="border-color: #b8bfc2;"> 
+        <hr style="border-color: #b8bfc2;">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
@@ -20,37 +20,84 @@
         </nav>
     </div>
 </section>
-<section class="py-4 my-5">
-   
-        
-            <div class="col-6 " style=" width: 65%; margin-left: 15%;margin-right: 35%;padding-top: 25px; padding-bottom: 30px; padding-left: 15%;padding-right: 10%; border: 10px solid rgba(211, 135, 211, 0.527);border-radius: 20px;">
-                <form >
-                    {% csrf_token %}
+<section class="">
+
+
+            <div class=" buyitem" >
+                <div >
+                    
                     <img src="{{products.product_image.url}}" class="card-image-top " alt="{{products}}"><br><br>
                     <h5 class="text-success ">{{products}}</h5>
                     <h6 class="my-2 text-danger">Current Price : Rs.<S>{{products.original_price |stringformat:'d'}}</S></h6>
                     <h6 class="my-2 text-primary">Price : Rs.{{products.selling_price |stringformat:'d'}}</h6>
-                    <h6><b>PAYMENT :</b>Cash On Delivery</h6>
+                    <h6><b>PAYMENT TYPE :</b>Cash On Delivery</h6>
+                    
+                </div>
+                <form action="">
+                    {% csrf_token %}
                     <label for="fname">First name:</label><br>
-                    <input type="text" size="20" id="fname" name="fname"><br><br>
-                    <label for="lname">Last name:</label><br>                
-                    <input type="text" size="20" id="lname" name="lname"><br><br>
-                    <label for="lname">Mobile Number:</label><br>                
-                    <input type="text" size="20" id="lname" name="lname"><br><br>
+                    <input type="text" size="20" id="fname" name="fname" placeholder="Enter your Name" required><br><br>
+                    <label for="lname">Last name:</label><br>
+                    <input type="text" size="20" id="lname" name="lname" placeholder="Enter your Last Name"  required><br><br>
+                    <label for="lname">Mobile Number:</label><br>
+                    <input type="text" size="20" id="lname" name="lname" placeholder="Enter your number" pattern="[0-9]{10}" required><br><br>
                     <label for="cf_address" >Address:</label><br>
-                    <input type="text" size="20" id="cf_address" name="cf_address"><br><br>
-                    <input type="submit"formnovalidate="formnovalidate" onclick="order()" value="Order" class="btn btn-warning" style="width:50vh";>
-                </form>   
+                    <textarea name="" id="" cols="25" rows="4" placeholder="Enter your Address" required></textarea><br><br>
+                    <input type="submit" onsubmit="ordere()" value="Order" class="btn btn-warning" style="width:250px";>
+                </form>
             </div>
-        
-    
+
+
 </section>
 
+
+<style>
+    img:hover{
+    height: 500px;
+}
+.buyitem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+}
+.buyitem div,form{
+    padding: 20px;
+    margin: 10px;
+
+}
+input,textarea {
+    border: none;
+    padding: 2px;
+    border-radius: 10px;
+    width: 300px;
+}
+
+input:hover,textarea:hover{
+    border:2px solid rgb(233, 253, 52)
+}
+
+.buyitem form{
+    border-radius: 4px;
+    background: rgb(246, 253, 148);
+    
+    
+}
+@media only screen and (max-width:750px){
+    .buyitem{
+         display: block;
+
+    }
+    input,textarea {
+        width: 100%;
+    }
+}
+</style>
 <script>
-    function order(){
+function ordere(){
         alert("ordered successfully done by {{user}}.Thankyou!!! ");
     }
-
 </script>
 {% endblock content %}
 
